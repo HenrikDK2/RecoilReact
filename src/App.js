@@ -22,14 +22,41 @@ const ProductGrid = styled.ul`
 function App() {
   return (
     <main>
-      <Heading>Recoil Library Test</Heading>
-      <ProductGrid>
-        <Item title="Produkt" price="50" src="https://via.placeholder.com/350x150" alt="Produkt" />
-        <Item title="Produkt" price="50" src="https://via.placeholder.com/350x150" alt="Produkt" />
-        <Item title="Produkt" price="50" src="https://via.placeholder.com/350x150" alt="Produkt" />
-        <Item title="Produkt" price="50" src="https://via.placeholder.com/350x150" alt="Produkt" />
-        <Item title="Produkt" price="50" src="https://via.placeholder.com/350x150" alt="Produkt" />
-      </ProductGrid>
+      <section>
+        <Heading>Recoil Library Test</Heading>
+        <ProductGrid>
+          <Item
+            title="Produkt"
+            price="50"
+            src="https://via.placeholder.com/350x150"
+            alt="Produkt"
+          />
+          <Item
+            title="Produkt"
+            price="50"
+            src="https://via.placeholder.com/350x150"
+            alt="Produkt"
+          />
+          <Item
+            title="Produkt"
+            price="50"
+            src="https://via.placeholder.com/350x150"
+            alt="Produkt"
+          />
+          <Item
+            title="Produkt"
+            price="50"
+            src="https://via.placeholder.com/350x150"
+            alt="Produkt"
+          />
+          <Item
+            title="Produkt"
+            price="50"
+            src="https://via.placeholder.com/350x150"
+            alt="Produkt"
+          />
+        </ProductGrid>
+      </section>
     </main>
   );
 }
