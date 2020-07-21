@@ -46,7 +46,7 @@ const BuyButton = styled.button`
   background: yellow;
   transition: all 0.2s;
   font-weight: bold;
-  background: #242323;
+  background: #ffe300;
   &:hover {
     transform: scale(1.05);
   }
