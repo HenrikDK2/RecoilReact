@@ -3,9 +3,11 @@ import ReactDOM from "react-dom";
 import { RecoilRoot } from "recoil";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import GlobalStyle from "./GlobalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <RecoilRoot>
       <App />
     </RecoilRoot>
