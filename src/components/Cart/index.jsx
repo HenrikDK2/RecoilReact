@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { cartState } from "../../Store";
+import { useRecoilState } from "recoil";
 
 const CartContainer = styled.article`
   min-height: 300px;
@@ -47,11 +49,13 @@ const FigureContainer = styled.figure`
 `;
 
 const Cart = () => {
+  const [thisCart, setThisCart] = useRecoilState(cartState);
+
   return (
     <CartContainer>
       <CartHeading>Shopping Cart</CartHeading>
       <CartList>
-        {/*         {cart.map((item) => (
+        {/*         {thisCart.map((item) => (
           <li>
             <FigureContainer>
               <img onDragStart={(e) => e.preventDefault()} src={item.src} alt="Product" />
