@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Item from "./components/productComponent";
+import Item from "./components/ProductComponent";
+import Cart from "./components/Cart";
+import { productsState } from "./Store";
+import { useRecoilValue } from "recoil";
 
 const Heading = styled.h1`
   font-size: 3rem;
@@ -20,42 +23,25 @@ const ProductGrid = styled.ul`
 `;
 
 function App() {
+  const products = useRecoilValue(productsState);
+
   return (
     <main>
       <section>
         <Heading>Recoil Library Test</Heading>
         <ProductGrid>
-          <Item
-            title="Produkt"
-            price="50"
-            src="https://via.placeholder.com/350x150"
-            alt="Produkt"
-          />
-          <Item
-            title="Produkt"
-            price="50"
-            src="https://via.placeholder.com/350x150"
-            alt="Produkt"
-          />
-          <Item
-            title="Produkt"
-            price="50"
-            src="https://via.placeholder.com/350x150"
-            alt="Produkt"
-          />
-          <Item
-            title="Produkt"
-            price="50"
-            src="https://via.placeholder.com/350x150"
-            alt="Produkt"
-          />
-          <Item
-            title="Produkt"
-            price="50"
-            src="https://via.placeholder.com/350x150"
-            alt="Produkt"
-          />
+          {products.map((product, i) => (
+            <Item
+              key={i}
+              title={product.title}
+              price={product.price}
+              src={product.src}
+              id={product.id}
+              alt="Produkt"
+            />
+          ))}
         </ProductGrid>
+        <Cart />
       </section>
     </main>
   );
