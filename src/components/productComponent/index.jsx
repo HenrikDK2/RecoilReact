@@ -56,6 +56,7 @@ const BuyButton = styled.button`
 const ProductComponent = ({ src, alt, title, price, id }) => {
   const [cart, setCart] = useRecoilState(cartState);
   const addProductToCart = () => {
+    console.log("Button Clicked!");
     console.log(cart);
     const product = {
       title,
