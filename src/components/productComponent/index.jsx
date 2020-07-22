@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { cartState } from "../../Store";
+import { useRecoilState } from "recoil";
 
 const ProductContainer = styled.li`
   display: flex;
@@ -22,16 +24,15 @@ const ProductContainer = styled.li`
 `;
 
 const FigureContainer = styled.figure`
-  width: 100%;
+  width: auto;
   height: 150px;
   margin: 0;
   & > img {
     display: block;
     border-radius: 5px;
-
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 `;
 
@@ -52,7 +53,20 @@ const BuyButton = styled.button`
   }
 `;
 
-const productComponent = ({ src, alt, title, price }) => {
+const ProductComponent = ({ src, alt, title, price, id }) => {
+  const [cart, setCart] = useRecoilState(cartState);
+  const addProductToCard = () => {
+    console.log(cart);
+    const product = {
+      title,
+      id,
+      price,
+      src,
+    };
+    setCart(cart.push(product));
+    console.log(cart);
+  };
+
   return (
     <ProductContainer>
       <FigureContainer>
@@ -63,9 +77,9 @@ const productComponent = ({ src, alt, title, price }) => {
         {price}
         <span>DKK</span>
       </p>
-      <BuyButton>Køb Nu!</BuyButton>
+      <BuyButton onClick={(e) => addProductToCard()}>Køb Nu!</BuyButton>
     </ProductContainer>
   );
 };
 
-export default productComponent;
+export default ProductComponent;
