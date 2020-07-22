@@ -55,7 +55,7 @@ const BuyButton = styled.button`
 
 const ProductComponent = ({ src, alt, title, price, id }) => {
   const [cart, setCart] = useRecoilState(cartState);
-  const addProductToCard = () => {
+  const addProductToCart = () => {
     console.log(cart);
     const product = {
       title,
@@ -77,7 +77,7 @@ const ProductComponent = ({ src, alt, title, price, id }) => {
         {price}
         <span>DKK</span>
       </p>
-      <BuyButton onClick={(e) => addProductToCard()}>Køb Nu!</BuyButton>
+      <BuyButton onClick={(e) => addProductToCart()}>Køb Nu!</BuyButton>
     </ProductContainer>
   );
 };
