@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { cartState } from "../../Store";
 import { useRecoilState } from "recoil";
@@ -55,20 +55,24 @@ const BuyButton = styled.button`
 
 const ProductComponent = ({ src, alt, title, price, id }) => {
   const [cart, setCart] = useRecoilState(cartState);
+
   const addProductToCart = () => {
     const product = {
       title,
       id,
       amount: 1,
+      totalPrice: price,
       price,
       src,
     };
-    let currentCart = [...cart];
-    let objExist = currentCart.find((x) => x.id === id);
+    let currentCart = JSON.parse(JSON.stringify(cart));
+    let thisProduct = currentCart.find((x) => x.id === id);
 
-    if (objExist) {
-      const index = currentCart.indexOf(objExist);
-      currentCart[index] = objExist;
+    if (thisProduct) {
+      const index = currentCart.indexOf(thisProduct);
+      thisProduct.amount++;
+      thisProduct.totalPrice = thisProduct.price * thisProduct.amount;
+      currentCart[index] = thisProduct;
     } else {
       currentCart = [...currentCart, product];
     }

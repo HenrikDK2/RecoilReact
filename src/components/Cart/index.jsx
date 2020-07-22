@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Input from "./input";
 import { cartState } from "../../Store";
 import { useRecoilState } from "recoil";
 
@@ -54,10 +55,6 @@ const Product = styled.li`
   display: flex;
   align-items: center;
   margin: 10px 0;
-  & > input {
-    width: 30px;
-    margin: 0 10px 0 auto;
-  }
   & > h4 {
     margin: 0 20px;
   }
@@ -76,17 +73,9 @@ const Cart = () => {
               <img onDragStart={(e) => e.preventDefault()} src={item.src} alt="Product" />
             </FigureContainer>
             <h4>{item.title}</h4>
-            {console.log(item)}
-            <input
-              type="number"
-              onChange={(e) => {
-                console.log("2");
-                setThisCart(([...thisCart][i] = { ...item, amount: e.currentTarget.value }));
-              }}
-              value={item.amount}
-            />
+            <Input type="number" index={i} item={item} />
             <p>
-              {item.price}
+              {item.totalPrice}
               <span>DKK</span>
             </p>
           </Product>
