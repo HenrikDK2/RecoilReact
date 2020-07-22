@@ -59,10 +59,21 @@ const ProductComponent = ({ src, alt, title, price, id }) => {
     const product = {
       title,
       id,
+      amount: 1,
       price,
       src,
     };
-    setCart([...cart, product]);
+    let currentCart = [...cart];
+    let objExist = currentCart.find((x) => x.id === id);
+
+    if (objExist) {
+      const index = currentCart.indexOf(objExist);
+      currentCart[index] = objExist;
+    } else {
+      currentCart = [...currentCart, product];
+    }
+
+    setCart(currentCart);
   };
 
   return (

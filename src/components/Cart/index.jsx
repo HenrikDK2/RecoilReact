@@ -76,7 +76,15 @@ const Cart = () => {
               <img onDragStart={(e) => e.preventDefault()} src={item.src} alt="Product" />
             </FigureContainer>
             <h4>{item.title}</h4>
-            <input type="number" />
+            {console.log(item)}
+            <input
+              type="number"
+              onChange={(e) => {
+                console.log("2");
+                setThisCart(([...thisCart][i] = { ...item, amount: e.currentTarget.value }));
+              }}
+              value={item.amount}
+            />
             <p>
               {item.price}
               <span>DKK</span>
