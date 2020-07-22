@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { cartState } from "../../Store";
+/* import { cartState } from "../../Store";
 import { useRecoilState } from "recoil";
-
+ */
 const CartContainer = styled.article`
   min-height: 300px;
   width: 400px;
@@ -49,8 +49,8 @@ const FigureContainer = styled.figure`
 `;
 
 const Cart = () => {
-  const [thisCart, setThisCart] = useRecoilState(cartState);
-
+  /*   const [thisCart, setThisCart] = useRecoilState(cartState);
+   */
   return (
     <CartContainer>
       <CartHeading>Shopping Cart</CartHeading>
