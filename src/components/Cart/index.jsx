@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-/* import { cartState } from "../../Store";
+import { cartState } from "../../Store";
 import { useRecoilState } from "recoil";
- */
+
 const CartContainer = styled.article`
   min-height: 300px;
   width: 400px;
@@ -31,13 +31,15 @@ const Price = styled.p`
 
 const CartList = styled.ul`
   list-style: none;
+  padding: 0;
+  margin: 0 auto;
   & > li {
   }
 `;
 
 const FigureContainer = styled.figure`
   width: auto;
-  height: 150px;
+  height: 50px;
   margin: 0;
   & > img {
     display: block;
@@ -48,25 +50,39 @@ const FigureContainer = styled.figure`
   }
 `;
 
+const Product = styled.li`
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  & > input {
+    width: 30px;
+    margin: 0 10px 0 auto;
+  }
+  & > h4 {
+    margin: 0 20px;
+  }
+`;
+
 const Cart = () => {
-  /*   const [thisCart, setThisCart] = useRecoilState(cartState);
-   */
+  const [thisCart, setThisCart] = useRecoilState(cartState);
+
   return (
     <CartContainer>
       <CartHeading>Shopping Cart</CartHeading>
       <CartList>
-        {/*         {thisCart.map((item) => (
-          <li>
+        {thisCart.map((item, i) => (
+          <Product key={i}>
             <FigureContainer>
               <img onDragStart={(e) => e.preventDefault()} src={item.src} alt="Product" />
-              <h4>{item.title}</h4>
-              <p>
-                {item.price}
-                <span>DKK</span>
-              </p>
             </FigureContainer>
-          </li>
-        ))} */}
+            <h4>{item.title}</h4>
+            <input type="number" />
+            <p>
+              {item.price}
+              <span>DKK</span>
+            </p>
+          </Product>
+        ))}
       </CartList>
       <Price>
         Price: <span>DKK</span>
