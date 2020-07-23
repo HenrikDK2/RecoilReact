@@ -1,8 +1,19 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const cartState = atom({
   key: "cartState",
   default: [],
+});
+
+export const cartSelector = selector({
+  key: "cartSelector",
+  get: ({ get }) => {
+    const cart = get(cartState).reduce((a, b) => a + b.price * b.amount, 0);
+
+    return {
+      totalCost: cart,
+    };
+  },
 });
 
 export const productsState = atom({

@@ -10,14 +10,17 @@ const InputNumber = styled.input`
 
 const Input = ({ index, item }) => {
   const [thisCart, setThisCart] = useRecoilState(cartState);
-  const [inputValue, setInputValue] = useState(item.amount);
 
   return (
     <InputNumber
       type="number"
       onChange={(e) => {
         let currentCart = JSON.parse(JSON.stringify(thisCart));
-        currentCart[index].amount = +e.currentTarget.value;
+        if (e.target.value < 1) delete currentCart[index];
+        else {
+          currentCart[index].amount = +e.currentTarget.value;
+          currentCart[index].totalPrice = currentCart[index].amount * currentCart[index].price;
+        }
         setThisCart(currentCart);
       }}
       value={item.amount}

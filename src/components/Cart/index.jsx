@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Input from "./input";
-import { cartState } from "../../Store";
-import { useRecoilState } from "recoil";
+import { cartState, cartSelector } from "../../Store";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const CartContainer = styled.article`
   min-height: 300px;
@@ -62,6 +62,7 @@ const Product = styled.li`
 
 const Cart = () => {
   const [thisCart, setThisCart] = useRecoilState(cartState);
+  const { totalCost } = useRecoilValue(cartSelector);
 
   return (
     <CartContainer>
@@ -82,7 +83,7 @@ const Cart = () => {
         ))}
       </CartList>
       <Price>
-        Price: <span>DKK</span>
+        Price: {totalCost} <span>DKK</span>
       </Price>
     </CartContainer>
   );
